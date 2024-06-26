@@ -19,7 +19,7 @@ from functools import partial
 import torch
 import torch.nn as nn
 import torch_harmonics as harmonics
-from apex.normalization import FusedLayerNorm
+from megatron.core.fusions.fused_layer_norm import FusedLayerNorm
 
 # helpers
 # to fake the sht module with ffts
