@@ -152,7 +152,7 @@ def load(package, *, pretrained=True, device="cuda"):
     local_std = np.load(package.get("global_stds.npy"))
 
     weights_path = package.get("weights.tar")
-    weights = torch.load(weights_path, map_location=device)
+    weights = torch.load(weights_path, map_location=device, weights_only=False)
     fixed_weights = _fix_state_dict_keys(weights["model_state"], add_module=False)
     core_model.load_state_dict(fixed_weights)
 
