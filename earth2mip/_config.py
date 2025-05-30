@@ -15,9 +15,16 @@
 # limitations under the License.
 
 import os
-from typing import List
+from importlib.metadata import version
+from typing import List, Optional
 
-from pydantic import BaseSettings, Field
+from packaging.version import Version
+from pydantic import Field
+
+if Version(version("pydantic")) >= Version("2"):
+    from pydantic_settings import BaseSettings
+else:
+    from pydantic import BaseSettings
 
 
 def _default_local_cache():

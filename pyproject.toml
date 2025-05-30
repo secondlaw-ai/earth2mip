@@ -32,6 +32,7 @@ dependencies = [
     "nvidia-modulus >= 0.4.0",
     "pandas>=1.5.3",
     "properscoring>=0.1",
+    "packaging",
     "pydantic >= 2",
     "pydantic-settings",
     "pytest-timeout >= 2.1.0",
