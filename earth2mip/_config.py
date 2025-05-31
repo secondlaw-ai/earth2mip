@@ -20,11 +20,7 @@ from typing import List, Optional
 
 from packaging.version import Version
 from pydantic import Field
-
-if Version(version("pydantic")) >= Version("2"):
-    from pydantic_settings import BaseSettings
-else:
-    from pydantic import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 def _default_local_cache():
@@ -59,9 +55,6 @@ class Settings(BaseSettings):
     # used for scoring (score-ifs.py, inference-medium-range)
     TIME_MEAN: str = ""
 
-    # used in score-ifs.py
-    # TODO refactor to a command line argument of that script
-    IFS_ROOT: str | None = None
 
     # only used in test suite
     # TODO add a default option.
@@ -73,5 +66,4 @@ class Settings(BaseSettings):
     # End point for s3 commands
     S3_ENDPOINT: str = "https://pbss.s8k.io"
 
-    class Config:
-        env_file = ".env"
+    model_config = SettingsConfigDict(env_file=".env")
