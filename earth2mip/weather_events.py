@@ -121,5 +121,5 @@ def read(forecast_name: str) -> WeatherEvent:
             if len(domain["diagnostics"]) > 1:
                 print("CWBDomain only supports one diagnostic")
                 domain["diagnostics"] = domain["diagnostics"][0]
-    event = WeatherEvent.model_validate(weather_event)
+    event = WeatherEvent.parse_obj(weather_event)
     return event
